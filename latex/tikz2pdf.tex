@@ -1,0 +1,54 @@
+\documentclass{article}
+\include{preview}
+\usepackage[xelatex,active,tightpage]{preview}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{pgfplots}
+\usepackage{eurosym}
+\usepackage{siunitx}
+
+
+\usepackage{pgfplotstable}
+% \usepackage{3dplot}
+\usepackage{pgfcalendar}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{
+  arrows,
+  positioning,
+  matrix,
+  calc,
+  decorations.pathreplacing,
+  decorations.pathmorphing,
+  decorations.markings,
+  decorations.text,
+  shapes,
+  backgrounds,
+  shadows,
+  trees,
+  fit,
+  snakes,
+  patterns,
+  mindmap,
+  intersections,
+  automata,
+  plotmarks,
+  positioning,
+  decorations.pathreplacing,
+  spy,
+  calligraphy,
+  backgrounds}
+
+  \DeclareSIUnit{\pers}{pers}
+  \DeclareSIUnit{\EUR}{\text{\euro}}
+  \sisetup{
+    per-mode = fraction,
+    inter-unit-product = \ensuremath{{}\cdot{}},
+  }
+%% INSERT YOUR OWN CODE HERE
+\begin{document}
+\begin{preview}
+%% TIKZ_CODE %%
+\end{preview}
+\end{document}

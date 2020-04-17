@@ -1,0 +1,347 @@
+# How money is created (and destroyed) in modern economies
+
+## Monetary base and money
+
+
+$$MB=\text{Notes} + \text{Coins}$$ Money is issued by the Central Bank in circulation. So the monetary base is the amount of notes and coins in Circulation plus the the amount notes and coins in Reserves. 
+
+Money, is the means of payment, the titles owned by households, businesses and the state, used for:
+
+- buying goods and services; 
+- pay incomes; 
+- pay debts.
+
+$\text{Titles}=c+CD \longrightarrow$ Notes and coins circulation plus checkable deposits.
+
+
+```{r, echo=FALSE, engine='tikz', out.width='50%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'svg', fig.cap='The relation between money balance and money', engine.opts = list(template = "latex/tikz2pdf.tex")}
+\begin{tikzpicture}
+\draw node[left]{Money}(0,0) -- (0,2);
+\draw(0,2) node[left]{MB} -- node[pos=0.5,sloped,above]{C}(2,2)node[pos=0.5,sloped,below]{1 euro} -- node[pos=0.5,sloped,above]{R}(4,2)node[pos=0.5,sloped,below]{1 euro} -- (6,0);
+\draw (0,0) -- node[pos=0.5,sloped,above]{1 euro}(2,0)node[pos=0.5,sloped,below]{C} -- node[pos=0.5,sloped,above]{100 euro}(6,0)node[pos=0.5,sloped,below]{CD};
+\draw (2,2) -- (2,0);
+\end{tikzpicture}
+```
+
+## The old view of money creation
+
+Assumption: $r=\frac{R}{CD}=\frac{10\text{\euro}}{100\text{\euro}}=10\% \implies$ banks have to back their checkable deposits at a fixed ratio.
+
+```{r, echo=FALSE, engine='tikz', out.width='80%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'svg', fig.cap='The old view of money creation', engine.opts = list(template = "latex/tikz2pdf.tex")}
+ \begin{tikzpicture}[node distance = 8 em and 10 em]
+    \node (CB) {CB};
+    \node [below = of CB] (B1) {$B_1$};
+      \node [below = of B1] (HB1) {$HB_1$};
+        
+        \node [above right = of HB1](B2){$B_2$};
+         \node [above = 1em of B2](R2){$R_2 = 10 \text{\euro}$};
+            \node [below = 7em of B2](HB2){HB2};
+            
+                    \node [above right = of HB2](B3){$B_3$};
+                             \node [above = 1em of B3](R3){$R_3 = 9 \text{\euro}$};
+
+                                \node [below = 7em of B3](HB3){HB3};
+                                
+                                
+                                        \node [above right = of HB3](BN){$R_n = \sum^{n}_{i=1} R_i=100\text{\euro}$};
+                                                    \node [below = 7em of BN](HBN){$\sum^{n}_{i=1} CD_i=1000\text{\euro}$};
+
+
+
+
+
+
+    \draw[thick, ->] (CB) -- node[pos=0.5,sloped,left, rotate = 90]{\footnotesize {$100$}} (B1);
+       \draw[thick, ->] (B1) -- node[pos=0.5,sloped,left, rotate = 90]{\footnotesize {$\text{Credit}_1 = 100 \text{\euro}$}} (HB1);
+         \draw[thick, ->] (B2) -- (R2);
+                  \draw[thick, ->] (HB1) -- node[pos=0.5,sloped,above](D1){$\text{Deposit}_1 = 100 \text{\euro}$} (B2);
+
+                  \draw[thick, ->] (B2) -- node[pos=0.5,sloped,above]{\footnotesize {$\text{Credit}_2 = 90 \text{\euro}$}}(HB2);
+                           \draw[thick, ->] (HB2) -- node[pos=0.5,sloped,above](D2){$\text{Deposit}_2 = 90 \text{\euro}$} (B3);
+                                    \draw[thick, ->] (B3) -- (R3);
+
+
+                                    \draw[thick, ->] (B3) -- node[pos=0.5,sloped,above]{\footnotesize {$\text{Credit}_3 = 81 \text{\euro}$}} (HB3);
+                                    
+                                                      \draw[thick, ->] (HB3) -- (BN);
+                                                                                                            \draw[thick, ->] (BN) -- (HBN);
+
+
+
+\draw[red, dashed, thick,->,shorten >=3pt] (D1.north) to [out=90,in=180,loop,looseness=2] node[pos=0.5,above, sloped]{$r = 10 \% $} ( R2.west);
+\draw[red, dashed, thick,->,shorten >=3pt] (D2.north) to [out=90,in=180,loop,looseness=2] node[pos=0.5,above, sloped]{$r = 10 \% $} ( R3.west);
+
+
+
+
+
+    \end{tikzpicture} 
+
+```
+
+
+\begin{equation*}
+    \begin{aligned}
+        \sum^{n}_{i=1} R_i=100\text{\euro} \\
+        \sum^{n}_{i=1} CD_i=1000\text{\euro}
+    \end{aligned}
+\end{equation*}
+
+**Lesson:**
+
+- Money (CD) is created by the initiative of the CB to create reserves. 
+- The quantity of money in circulation is fixed and determined by the quantity of MB, created by the CB. 
+- Money is exogenous to the economy. 
+
+
+## The new view of Money Creation (BOE, 2014)
+- The CB does not fix the quantity of reserves injected in the banking sector. It sets the interest rate at which it lends reserves to banks. Say $i_{CB}=1\%$. 
+- Banks add a margin (spread) and set an interest rate, $i$, at which they lend to HBS. Say $i_{C}=3\%$.
+- At rate $i$, HBS ask for a certain amount of credit, say 150\euro. 
+- No matter whether banks own reserves or not, they grant the amount they deem credit worthy, say 100\euro ($=\frac{2}{3}$).
+- They do this not by providing notes and coins, but by opening a checkable deposit (CD) of 100\euro.
+
+
+```{r, echo=FALSE, engine='tikz', out.width='80%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'svg', fig.cap='The old view of money creation', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{tikzpicture}[node distance = 3 em]
+\node (B1){$\text{Bank}_1$};
+\node [right = 12 em of B1](B2){$\text{Bank}_2$};
+\node [below =7.5 em of B1](HBS1){$\text{HBS}_1$};
+\node [below = 7.5 em of B2](HBS2){$\text{HBS}_2$};
+\node [above right = 4 em and 6 em of B1](CB){CB};
+
+\draw [thick,->] (CB) -- node[pos=0.5,sloped,above]{\footnotesize{$\text{i}_{\text{CB}} = 1\%$}} (B1);
+\draw [thick,->] (B1) -- node[pos=0.5,sloped,above]{R} (B2);
+\draw [thick,->] (B1) -- (HBS1);
+\draw [thick,->] (HBS1) -- node[pos=0.5,sloped,above]{Check = 100 \euro} (HBS2);
+\draw [thick,->] (HBS2) -- (B2);
+
+\node [below right = 1.7 em and 1 em of B1](cr1){$\text{Credit}_1$};
+\node [below =  1 em of cr1](cd11){$\text{CD}_1 =  100 \text{\euro}$};
+\draw [thick, ->] (cr1) -- (cd11);
+\draw[->] (cd11) -- (HBS1);
+
+\draw[->] (cr1) -- node[pos=0.5,sloped,above]{\footnotesize{$\text{i}_C = 3\%$}} (B1);
+
+
+
+
+%Red Lines
+\node[above left = 0.4 em of B2](B22){}; 
+\node[above right = 0.4 em of B1](B11){};
+\draw[red, thick, ->] (B22) -- node[pos=0.5,sloped,above]{R} (B11);
+
+
+\node[red, below = of HBS2](HBS22){$\text{HBS}_2^2$};
+\node[red, below = of HBS1](HBS11){$\text{HBS}_1^1$};
+
+\draw[red, dashed, thick,->,shorten >=3pt] (B2) to [out=20,in=10,loop,looseness=1] node[pos=0.5,right]{$\text{Credit}_2' = 100 \text{\euro} \rightarrow \text{CD'}_2 = 100 \text{\euro}$} (HBS22);
+\draw[red, dashed, thick, ->] (HBS22) --  node[pos=0.5,sloped,above]{Check = 100 \euro}(HBS11);
+\draw[red, dashed, thick,->,shorten >=3pt] (HBS11) to [out=180,in=190,loop,looseness=1] node[pos=0.5,left]{$\text{CD}_1' = 100 \text{\euro}$} (B1);
+
+
+
+\end{tikzpicture} 
+```
+
+
+Can $B_1$ extend a credit of 100\euro by simply opening a CD=100\euro with only R=1\euro (instead of R=100\euro).
+
+$\text{Profit}=3\%(100\text{\euro})-1\%(1\text{\euro})=3\% \cdot 100\text{\euro}=\text{Revenue?}$
+
+Not true, because $HBS_1$ will the $CD_1$ to make payments to other HBS, that are likely to be customers of another bank, $B_2$.
+
+$\implies B_1$ is obliged to get R=100\euro from the CB and transfer them to $B_2$. 
+
+$B_1$'s profit=$3\%(100\text{\euro}-1\%(100\text{\euro})=i_C(Credit-i_{CB}(Reserves)=(3\%-1\%)(100\text{\euro})=2\text{\euro}$
+
+However $B_2$ is no different from $B_1 \implies$ it is also likely to extend credit to economic agents $HBS'_2$
+
+```{r, echo=FALSE, engine='tikz', out.width='80%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'svg', fig.cap='The old view of money creation', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{tikzpicture}[node distance = 4 em and 8em]
+\node(B1) at (0,0) {$B_1$};
+
+\node[above right = of B1](cr1){$\text{Credit}_1 = 100 \text{\euro}$};
+\node[right = of cr1](cd2){$\text{CD}_2 = 100 \text{\euro}$};
+\node[above = of cd2](r1){$\text{R}_2 = 1 \text{\euro}$};
+
+\node[below right = of cd2](b2){$\text{B}_2$};
+\node[below left = of b2](cr2){$\text{Credit}_2 = 100 \text{\euro}$};
+
+\node[left = of cr2](cd1){$\text{CD}_1 = 100 \text{\euro}$};
+\node[below = of cd1](r2){$\text{R}_1 = 1 \text{\euro}$};
+
+\draw[->, thick] (B1) -- (cr1.west);
+\draw[->, thick] (cr1) -- node[pos=0.5,sloped,above]{$\text{R} = 100 \text{\euro}$} (cd2);
+\draw[ ->, thick] (cd2) -- (r1);
+
+\draw[->, thick] (cd2.east) -- (b2);
+\draw[->, thick] (b2) -- (cr2.east);
+\draw[->, thick] (cr2) -- node[pos=0.5,sloped,above]{$\text{R} = 100 \text{\euro}$} (cd1);
+
+\draw[->, thick] (cd1) -- (B1);
+
+\draw[->, thick] (cd1) -- (r2);
+
+
+\node[right = 6 em of B1](dot1){};
+\node[left = 6 em of b2](dot2){};
+
+\node[below = 0.5 em of dot1](dot11){};
+\node[below = 0.5 em of dot2](dot22){};
+
+
+\node[red,above right = 3 em of cd2](sd2){$\text{SD'}_2 = 100 \text{\euro}$};
+\draw[thick, red, ->] (cd2) -- (sd2);
+
+\node[red,below left = 3 em of cd1](sd1){$\text{SD'}_1 = 100 \text{\euro}$};
+\draw[thick, red, ->] (cd1) -- (sd1);
+
+\end{tikzpicture}
+```
+
+
+
+$\implies$ profits of each bank = $ i_C \cdot Credit-i_{SD}\cdot SD-i_{CB}\cdot R=3\%(100\text{\euro})-1\%(100\text{\euro})-0=(3\%-1\%)(100\text{\euro})=2\text{\euro}$.
+
+The recipients of the payments will not keep their checking deposits either. They will convert them into savings deposits to get an interest rate, $i_{SD}=1\%$. 
+
+Lessons:
+
+- Money (CD) is created as a result of the initiative of HBS to ask for a bank loan. Credit created the deposits. 
+- Quantity of money in circulation is not fixed by the CB. The CB fixes the $i_{CB}$.
+- The quantity of money changes when HBS ask for bank credit. Money is endogenous to the economy.
+
+### When banks extend credit to HBS, say of 103\euro:
+- They don't hand 103\euro over; 
+- They simply open a new checking deposit. 
+
+1. Credit $\rightarrow$ Deposits; 
+2. The money created and held by HBS does not constitute net wealth for them. 
+
+When HBS who get the credit eventually pay it back in the future, they don't hand 103\euro in notes and coins, they just tell the banks to eliminate their CD's. 
+
+Thus, the payment of bank loan=103\euro, represents the destruction of checkable deposits of 103\euro, which is equal to the destruction of money=103\euro.
+
+### How much Reserves does the bank need to back the credit it has extended?
+
+```{r, echo=FALSE, engine='tikz', out.width='80%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'svg', fig.cap='The old view of money creation', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+    \begin{tikzpicture}[node distance = 3 em]
+\node (B1){$\text{Bank}_1$};
+\node [right = 12 em of B1](B2){$\text{Bank}_2$};
+\node [below =7.5 em of B1](HBS1){$\text{HBS}_1$};
+\node [below = 7.5 em of B2](HBS2){$\text{HBS}_2$};
+
+\draw [thick,->] (B1) -- node[pos=0.5,sloped,below](r103){$R = 103 \text{\euro}$} (B2);
+\draw [thick,->] (B1) -- node[pos=0.5,sloped,above, align=left](cr11){$\text{Credit}_1= 103 \text{\euro}$ \\ $\rightarrow \text{CD'}_1 = 100 \text{\euro}$} (HBS1);
+\draw [thick,->] (HBS1) -- node[pos=0.5,sloped,above]{Check = 100 \euro} (HBS2);
+\draw [thick,->] (HBS2) -- node[pos=0.5,sloped,above](cd22){$\text{CD}_2= 103 \text{\euro}$} (B2);
+
+%Red Lines
+\node[above left = 0.4 em of B2](B22){}; 
+\node[above right = 0.4 em of B1](B11){};
+\draw[red, thick, ->] (B22) -- node[pos=0.5,sloped,above](r100){$R = 100 \text{\euro}$} (B11);
+
+
+\node[red, below = of HBS2](HBS22){$\text{HBS'}_2$};
+\node[red, below = of HBS1](HBS11){$\text{HBS'}_1$};
+
+\draw[red, dashed, thick,->,shorten >=3pt] (B2) to [out=20,in=10,loop,looseness=1] node[pos=0.5,right, align=left](cr2p){$\text{Credit}_2' = 100 \text{\euro}$ \\ $\rightarrow \text{CD'}_2 = 100 \text{\euro}$} (HBS22);
+\draw[red, dashed, thick, ->] (HBS22) --  node[pos=0.5,sloped,above]{Check = 100 \euro}(HBS11);
+\draw[red, dashed, thick,->,shorten >=3pt] (HBS11) to [out=180,in=190,loop,looseness=1] node[pos=0.5,left, align=left](cd1p){$\text{CD}_1' = 100 \text{\euro}$} (B1);
+
+\draw[red, dashed, thick,->,shorten >=3pt] (r100.north east) to [out=60,in=90,loop,looseness=1] (cr2p);
+\draw[red, dashed, thick,->,shorten >=3pt] (cd1p) to [out=100,in=140,loop,looseness=1] (r100.north west);
+
+\draw[->, thick] (cd22) -- (r103);
+\draw[->, thick] (r103) -- (cr11);
+
+\end{tikzpicture} 
+```
+
+
+At first, $R=1\%(103\text{\euro})=1.03\text{\euro}$
+
+Once $HBS_1$ uses the $CD_1$ to make a payment in favor of costumers of other banks, $R=103\text{\euro}$ (in total). [This is represented by the black arrows]
+
+However, $B_2$ will also extend credit, say of 100\euro. [red arrows]
+
+In sum: 
+
+```{r, echo=FALSE, engine='tikz', out.width='80%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'svg', fig.cap='The old view of money creation', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{tikzpicture}[node distance = 4 em and 8em]
+\node(B1) at (0,0) {$B_1$};
+
+\node[above right = of B1](cr1){$\text{Credit'}_1 = 103 \text{\euro}$};
+\node[right = of cr1](cd2){$\text{CD}_2 = 103 \text{\euro}$};
+\node[red, above = of cd2](r1){$\text{R} = 1,03 \text{\euro}$};
+
+\node[below right = of cd2](b2){$\text{B}_2$};
+\node[below left = of b2](cr2){$\text{Credit'}_2 = 100 \text{\euro}$};
+
+\node[left = of cr2](cd1){$\text{CD}_1 = 100 \text{\euro}$};
+\node[red, below = of cd1](r2){$\text{R} = 1 \text{\euro}$};
+
+\draw[->, thick] (B1) -- (cr1.west);
+\draw[->, thick] (cr1) -- node[pos=0.5,sloped,above]{$\text{R} = 103 \text{\euro}$} (cd2);
+\draw[red, ->, thick] (cd2) -- (r1);
+
+\draw[->, thick] (cd2.east) -- (b2);
+\draw[->, thick] (b2) -- (cr2.east);
+\draw[->, thick] (cr2) -- (cd1);
+
+\draw[->, thick] (cd1) -- (B1);
+
+\draw[red, ->, thick] (cd1) -- (r2);
+
+
+\node[right = 6 em of B1](dot1){};
+\node[left = 6 em of b2](dot2){};
+
+\node[below = 0.5 em of dot1](dot11){};
+\node[below = 0.5 em of dot2](dot22){};
+
+\draw[->, red, thick] (dot1) -- node[red, pos=0.5,sloped,above]{$\text{R} = 3 \text{\euro}$} (dot2);
+\draw[->, thick] (dot22) -- node[pos=0.5,sloped, below]{$\text{Loan of R} = 1.97 \text{\euro}$} (dot11);
+
+\node[red,above right = 3 em of b2](cb){CB};
+
+\draw[thick, red, ->] (b2) -- (cb);
+
+\end{tikzpicture}
+```
+
+
+$B_1$ needs to back it's credit=103\euro with $R=1\text{\euro}+3\text{\euro}$
+
+$\implies$ $B_1$'s profits $=i_C \cdot Credit-i_{CB}\cdot R=3\%(103\text{\euro})-1\%(4\text{\euro})$ 
+
+\paragraph{If at the prevailing $i_{CB}$ banks can easily get tiny amount of reserves they need from the CB, why don't they expand Credit indefinitely to expand profits?}
+\begin{enumerate}
+    \item Banks are limited by the amount of credit demanded by HBS; 
+    \item If HBS start to demand too much credit and banks correspond to that demand, too much credit, and hence, money, too much Demand for goods and services $\implies \uparrow \pi \implies \text{CB will increase } i_{CB} \implies \downarrow D_{Credit} \implies \implies \downarrow Credit, \downarrow Money, \downarrow D_{g+s}$.
+    \item Banks have to meet $EqK \geq 10\%$ loan:
+\end{enumerate}
+
+% Bank balance sheet scheme
+
+If $D_{credit}=110\text{\euro}$ but EqK=10\euro
+
+$D_{credit}>10\cdot EqK \implies$ either issuance of new stocks to increase EqK to 11\euro or restriction of credit to 100\euro. 
+
+\[ 
+CD=100 \text{\euro} \implies \left\{
+\begin{array}{l l}
+    C=5\text{\euro} \\
+    SD=65\text{\euro} \\
+    CD=30\text{\euro}
+\end{array}
+\right.
+\]
+
+#### Q1: How does this affect $B_1$'s profits?
+#### Q2: Imagine there was a single bank.
